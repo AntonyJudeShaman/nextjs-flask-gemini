@@ -16,7 +16,7 @@ CORS(app)
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"C:\Users\Admin\Downloads\translation.json"
 genai.configure(api_key=gemini_api_key)
 
-@app.route('/api/home', methods=['GET'])
+@app.route('/api/home', methods=['POST','GET'])
 def return_home():
 
     return jsonify({"hello": "world"})
