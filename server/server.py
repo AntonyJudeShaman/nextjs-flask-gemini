@@ -27,7 +27,6 @@ def ai_prompt():
         return api_request.respond_to_ai_request()
     
     except Exception as e:
-        logging.error(f"Scraping API call error: {e}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':

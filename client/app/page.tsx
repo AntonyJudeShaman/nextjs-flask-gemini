@@ -98,7 +98,7 @@ export default function Home() {
             getAIResponse();
           }}
           size="lg"
-          disabled={scrapData?.length === 0 ? true : false}
+          // disabled={scrapData?.length === 0 ? true : false}
         >
           Send prompt
         </Button>
