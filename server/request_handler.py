@@ -5,7 +5,6 @@ class ApiRequestHandler:
         self._scraped_data = ""
     
     def respond_to_scraping_request(self):
-
         data = request.get_json()
         self._target_url = data.get('url', '')
         try:
