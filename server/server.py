@@ -20,6 +20,15 @@ def scrape_website():
     except Exception as e:
         logging.error(f"Scraping API call error: {e}")
         return jsonify({"error": str(e)}), 500
+    
+@app.route('/api/ai/getdetails', methods=['POST'])
+def ai_prompt():
+    try:
+        return api_request.respond_to_ai_request()
+    
+    except Exception as e:
+        logging.error(f"Scraping API call error: {e}")
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)

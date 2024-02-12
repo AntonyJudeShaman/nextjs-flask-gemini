@@ -10,6 +10,14 @@ class ApiRequestHandler:
         try:
             scraper = WebsiteScraper()
             self._scraped_data = scraper.scrape(self._target_url)
-            return jsonify({"scraped_data": self._scraped_data})
+            return jsonify({"scraped_data": self._scraped_data}), 200
         except Exception as e:
-            return jsonify({"error": "Error handling request."}), 500
+            return jsonify({"scraped_data": "Error handling request."}), 500
+    
+    def respond_to_ai_request(self):
+        try:
+            if self._scraped_data == "":
+                return jsonify({"ai_response": "No data to process."}), 500
+            return jsonify({"ai_response": self._scraped_data}), 200
+        except Exception as e:
+            return jsonify({"ai_response": "Error handling request."}), 500
