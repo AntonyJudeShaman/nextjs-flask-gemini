@@ -27,3 +27,16 @@ class ApiRequestHandler:
         
         except Exception as e:
             return jsonify({"error": "Error handling request."}), 500
+        
+    # def respond_to_multimodal_ai_request(self):
+    #     try:
+    #         gemini_chat = GeminiMultiModalChat()
+    #         data = request.get_json()
+    #         question = data.get("prompt", "")
+    #         if not question:
+    #             return jsonify({"error": "Question not provided"}), 400
+    #         response = gemini_chat.get_response(question)
+    #         return jsonify({"multimodal_ai_response": response})
+        
+        # except Exception as e:
+        #     return jsonify({"error": "Error handling request."}), 500
