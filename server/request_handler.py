@@ -10,7 +10,7 @@ class ApiRequestHandler:
         self._target_url = data.get('url', '')
         try:
             scraper = WebsiteScraper()
-            self._scraped_data = scraper.scrape(self._target_url)
+            self._scraped_data = scraper.get_scrape_data(self._target_url)
             return jsonify({"scraped_data": self._scraped_data})
         except Exception as e:
             return jsonify({"error": "Error handling request."}), 500

@@ -11,16 +11,16 @@ export default function Home() {
   const [prompt, setPrompt] = useState("");
   const [promptResult, setPromptResult] = useState("");
 
-  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL || "localhost:8080";
+  const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || "localhost:8080";
 
   const checkServerStatus = async () => {
-    const response = await axios.get(`http://${serverUrl}/api/home`);
+    const response = await axios.get(`http://${serverURL}/api/home`);
     const result = response.data;
     setServerStatus(result.server_status);
   };
 
   const ScrapeWebsite = async () => {
-    const response = await axios.post(`http://${serverUrl}/api/scrape`, {
+    const response = await axios.post(`http://${serverURL}/api/scrape`, {
       url: scrapeURL,
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export default function Home() {
   const getAIResponse = async () => {
     try {
       const response = await axios.post(
-        `http://${serverUrl}/api/ai/getdetails`,
+        `http://${serverURL}/api/ai/getdetails`,
         {
           prompt: prompt,
           headers: {

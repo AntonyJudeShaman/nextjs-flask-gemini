@@ -5,3 +5,4 @@ google-generativeai
 bs4
 google
 python-dotenv
+waitress

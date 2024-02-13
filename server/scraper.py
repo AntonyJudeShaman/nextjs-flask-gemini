@@ -4,9 +4,10 @@ import requests
 import logging
 
 class WebsiteScraper:
-    def scrape(self, target_url):
+    def get_scrape_data(self, target_url):
+        self._target_url = target_url
         try:
-            response_data = requests.get(target_url)
+            response_data = requests.get(self._target_url)
             soup = BeautifulSoup(response_data.text, 'html.parser')
 
             scraped_data = ""

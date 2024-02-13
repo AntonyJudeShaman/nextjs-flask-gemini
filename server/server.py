@@ -1,8 +1,7 @@
 import logging
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_cors import CORS
 from request_handler import ApiRequestHandler
-from chatbot import GeminiChatBot
 
 app = Flask(__name__)
 CORS(app)
