@@ -1,6 +1,6 @@
-from scraper import WebsiteScraper
+from Class.scraper import WebsiteScraper
 from flask import jsonify, request
-from chatbot import GeminiChatBot
+from Class.chatbot import GeminiChatBot
 class ApiRequestHandler:
     def __init__(self):
         self._scraped_data = ""

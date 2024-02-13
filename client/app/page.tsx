@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
+import Sidebar from "@/components/side-bar";
 
 export default function Home() {
   const [serverStatus, setServerStatus] = useState("");
@@ -49,62 +50,67 @@ export default function Home() {
   };
 
   return (
-    <section className="container flex gap-8 flex-col justify-start md:mt-32 mt-16 items-start min-h-screen">
-      <div>
-        <Button
-          onClick={() => {
-            checkServerStatus();
-          }}
-          size="lg"
-          type="submit"
-        >
-          Check server status
-        </Button>
-        <p className="text-green-500">
-          {serverStatus === "Server is running"
-            ? "All systems normal."
-            : serverStatus === "Server is not running"
-            ? "Some issue with the server."
-            : serverStatus}
-        </p>
-      </div>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <Input
-          type="text"
-          value={scrapeURL}
-          onChange={(e) => setScrapeURL(e.target.value)}
-          placeholder="Enter an absolute URL to scrape"
-          className="mb-4"
-        ></Input>
-        <Button
-          onClick={() => {
-            ScrapeWebsite();
-          }}
-          size="lg"
-          type="submit"
-        >
-          Scrape website
-        </Button>
-        <p>{scrapData}</p>
-      </form>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <Input
-          type="text"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Enter a prompt"
-          className="mb-4"
-        ></Input>
-        <Button
-          onClick={() => {
-            getAIResponse();
-          }}
-          size="lg"
-        >
-          Send prompt
-        </Button>
-        <p>{promptResult}</p>
-      </form>
-    </section>
+    <div>
+      <section>
+        <Sidebar />
+      </section>
+      <section className="container flex gap-8 flex-col justify-start md:mt-32 mt-16 items-start min-h-screen">
+        <div>
+          <Button
+            onClick={() => {
+              checkServerStatus();
+            }}
+            size="lg"
+            type="submit"
+          >
+            Check server status
+          </Button>
+          <p className="text-green-500">
+            {serverStatus === "Server is running"
+              ? "All systems normal."
+              : serverStatus === "Server is not running"
+              ? "Some issue with the server."
+              : serverStatus}
+          </p>
+        </div>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <Input
+            type="text"
+            value={scrapeURL}
+            onChange={(e) => setScrapeURL(e.target.value)}
+            placeholder="Enter an absolute URL to scrape"
+            className="mb-4"
+          ></Input>
+          <Button
+            onClick={() => {
+              ScrapeWebsite();
+            }}
+            size="lg"
+            type="submit"
+          >
+            Scrape website
+          </Button>
+          <p>{scrapData}</p>
+        </form>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <Input
+            type="text"
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder="Enter a prompt"
+            className="mb-4"
+          ></Input>
+          <Button
+            onClick={() => {
+              getAIResponse();
+            }}
+            size="lg"
+          >
+            Send prompt
+          </Button>
+          <p>{promptResult}</p>
+        </form>
+      </section>
+    </div>
   );
 }
