@@ -56,6 +56,7 @@ export default function Home() {
             checkServerStatus();
           }}
           size="lg"
+          type="submit"
         >
           Check server status
         </Button>
@@ -67,7 +68,7 @@ export default function Home() {
             : serverStatus}
         </p>
       </div>
-      <div>
+      <form onSubmit={(e) => e.preventDefault()}>
         <Input
           type="text"
           value={scrapeURL}
@@ -80,12 +81,13 @@ export default function Home() {
             ScrapeWebsite();
           }}
           size="lg"
+          type="submit"
         >
           Scrape website
         </Button>
         <p>{scrapData}</p>
-      </div>
-      <div>
+      </form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <Input
           type="text"
           value={prompt}
@@ -98,12 +100,11 @@ export default function Home() {
             getAIResponse();
           }}
           size="lg"
-          // disabled={scrapData?.length === 0 ? true : false}
         >
           Send prompt
         </Button>
         <p>{promptResult}</p>
-      </div>
+      </form>
     </section>
   );
 }

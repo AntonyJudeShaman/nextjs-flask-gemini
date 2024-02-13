@@ -1,5 +1,6 @@
 from scraper import WebsiteScraper
 from flask import jsonify, request
+from chatbot import GeminiChatBot
 class ApiRequestHandler:
     def __init__(self):
         self._scraped_data = ""
@@ -16,8 +17,13 @@ class ApiRequestHandler:
     
     def respond_to_ai_request(self):
         try:
-            if self._scraped_data == "":
-                return jsonify({"error": "No data to process."}), 500
-            return jsonify({"ai_response": self._scraped_data}),
+            gemini_chat = GeminiChatBot()
+            data = request.get_json()
+            question = data.get("prompt", "")
+            if not question:
+                return jsonify({"error": "Question not provided"}), 400
+            response = gemini_chat.get_response(question)
+            return jsonify({"ai_response": response})
+        
         except Exception as e:
             return jsonify({"error": "Error handling request."}), 500
